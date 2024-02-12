@@ -1,26 +1,23 @@
-clock();
-
-function clock(){
-  const date = new Date();
-  const indent = 2;
-  const clockObj = {
-    am_pm: date.getHours() >= 12 ? 'pm' : 'am',
-    hora: date.getHours() % 12 || 12,
-    minuto: date.getMinutes(),
-    segundo: date.getSeconds(),
-    día: date.toLocaleDateString('es-ES', { weekday: 'long' }),
-    fecha: date.getDate(),
-    mes: date.toLocaleDateString('es-ES', { month: 'long' }),
-    año: date.getFullYear(),
-}
-
-  const valFormat = (val) => {
-    if(typeof val == 'number') return `<span class="value number">${val}</span>`
-    else if (typeof val == 'string') return `<span class="value string">"${val}"</span>`
-  }
-  document.querySelector(".watch").innerHTML = 
-    `<span class="keyword">const</span> <span class="def">clock</span> <span class="operator">=</span> {<br>` 
-    + Object.entries(clockObj).reduce((str, [key, val])=> str + `${'&nbsp'.repeat(indent)}<span class="property">${key}</span>: ${valFormat(val)},<br>`, '') 
-    + '};';
-  requestAnimationFrame(clock)
-}
+$(document).ready(function(){
+      // Al cargar la página, ocultamos las cortinas
+      $('.left-curtain').css('width', '0%');
+      $('.right-curtain').css('width', '0%');
+    
+      $('.valentines-day').click(function(){
+        // Animación de desvanecimiento de los elementos del sobre
+        $('.envelope').css({'animation':'fall 3s linear 1', '-webkit-animation':'fall 3s linear 1'});
+        $('.envelope').fadeOut(800, function() {
+          // Ocultar elementos dentro de .valentines-day
+          $('.valentines-day .heart, .valentines-day .text, .valentines-day .front').hide();
+          
+    
+          // Hacer visible la carta con una animación ondulante
+          $('#card').css({'visibility':'visible', 'opacity': 0, 'transform': 'scale(0.1)'});
+          $('#card').animate({'opacity': 1}, {duration: 1000, step: function(now, fx) {
+            var scale = 1 + Math.sin(now * Math.PI) * 0.1; // Calculamos la escala basada en la función seno
+            $(this).css('transform', 'scale(' + scale + ')');
+          }}); // Animación de ondulación
+        });
+      });
+    });
+    
