@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Mi Horario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             background-color: #F5F5F5;
@@ -16,13 +17,18 @@
             margin-top: 20px;
         }
 
+        .table-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow-x: auto;
+        }
+
         table {
-            margin: 0 auto;
             border-collapse: collapse;
             background-color: #FFFFFF;
             border: 1px solid #CCCCCC;
-            width: 90%;
-            max-width: 600px;
+            width: 100%;
         }
 
         th, td {
@@ -37,6 +43,9 @@
 
         td {
             border: 1px solid #CCCCCC;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         td:hover {
@@ -65,7 +74,7 @@
 </head>
 <body>
     <h1>Mi Horario</h1>
-    <table>
+    <div class="table-container">
         <tr>
             <th>Hora</th>
             <th>Lunes</th>
