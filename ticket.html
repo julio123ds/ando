@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FINAL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="ticket">
+      <h2>ORDEN</h2>
+      <p id="tarjetaSeleccionada"></p>
+      <p id="ParteSeleccionada"></p>
+      <p id="tarjetaCantidad"></p>
+      <p id="cardSeleccionada2"></p>
+      <a href="index.html"><button id="boton" class="boton">INICIO</button></a>
+      <button class="boton" onclick="window.print()">Imprimir ticket</button>
+    </div>
+    <script>
+      var tarjetaSeleccionada = localStorage.getItem('tarjetaSeleccionada');
+      document.getElementById('tarjetaSeleccionada').textContent = tarjetaSeleccionada;
+      var ParteSeleccionada = localStorage.getItem('ParteSeleccionada');
+      document.getElementById('ParteSeleccionada').textContent = ParteSeleccionada;
+      var cardSeleccionada = localStorage.getItem('cardSeleccionada2');
+      document.getElementById('cardSeleccionada2').textContent = cardSeleccionada;
+      var tarjetaCantidad = localStorage.getItem('tarjetaCantidad');
+      document.getElementById('tarjetaCantidad').textContent = tarjetaCantidad;
+
+      document.getElementById('boton').addEventListener('click', function() {
+      // Borra los datos almacenados en el navegador
+      localStorage.clear();
+      });
+  </script>
+</body>
+</html>
