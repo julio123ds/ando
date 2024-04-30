@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FINAL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="ticket">
+      <p class="fecha-hora">Fecha y hora: <span id="fechaHora"></span></p>
+      <h1>ORDEN</h1>
+      <p id="TarjetaSeleccionada"></p>
+      <p id="ParteSeleccionada"></p>
+      <p id="OtrosSeleccionada"></p>
+      <p id="TarjetaCantidad"></p>
+      <a href="index.html"><button id="boton" class="boton">Inicio</button></a>
+      <button class="boton" onclick="window.print()">Imprimir ticket</button>
+    </div>
+    <script>
+      var TarjetaSeleccionada = localStorage.getItem('TarjetaSeleccionada');
+      document.getElementById('TarjetaSeleccionada').textContent = TarjetaSeleccionada;
+      var ParteSeleccionada = localStorage.getItem('ParteSeleccionada');
+      document.getElementById('ParteSeleccionada').textContent = ParteSeleccionada;
+      var OtrosSeleccionada = localStorage.getItem('OtrosSeleccionada');
+      document.getElementById('OtrosSeleccionada').textContent = OtrosSeleccionada;
+      var TarjetaCantidad = localStorage.getItem('TarjetaCantidad');
+      document.getElementById('TarjetaCantidad').textContent = TarjetaCantidad;
+
+      document.getElementById('boton').addEventListener('click', function() {
+      // Borra los datos almacenados en el navegador
+      localStorage.clear();
+      });
+      
+      // Script para mostrar la fecha y hora actual en el ticket al imprimir
+    window.onload = function() {
+      var fechaHoraElement = document.getElementById('fechaHora');
+      var fechaHora = new Date();
+      fechaHoraElement.innerText = fechaHora.toLocaleString();
+    };
+
+  </script>
+</body>
+</html>
